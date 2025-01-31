@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <button class="trade-complete-button"
                         data-id="${trade.id}"
                         data-trade-name="${trade.trade_name}">
-                            Completar Trade
+                            Compartir
                         </button >
                 </div>`: ""
                     }
@@ -129,10 +129,53 @@ document.addEventListener('click', (event) => {
             alert('Error: ID no válido');
             return;
         }
-        // Codificar el nombre para URL (ej: espacios → %20)
+        // // Codificar el nombre para URL (ej: espacios → %20)
+        // const encodedTradeName = encodeURIComponent(tradeName);
+        // // Enviar ambos parámetros
+        // window.location.href = `id-trade.html?id=${tradeId}&name=${encodedTradeName}`;
+        if (!tradeId || tradeId === "undefined") {
+            alert('Error: ID no válido');
+            return;
+        }
+
+        // Crear o mostrar sección de compartir
         const encodedTradeName = encodeURIComponent(tradeName);
-        // Enviar ambos parámetros
-        window.location.href = `id-trade.html?id=${tradeId}&name=${encodedTradeName}`;
+        const shareUrl = `${window.location.origin}/id-trade.html?id=${tradeId}&name=${encodedTradeName}`;
+
+        // Crear elementos dinámicamente
+        const shareSection = document.createElement('div');
+        shareSection.className = 'share-overlay';
+        shareSection.innerHTML = `
+            <div class="share-container">
+                <div class="share-header">
+                    <h3>📤 Compartir Trade</h3>
+                    <button class="close-share">&times;</button>
+                </div>
+                <p>¡Comparte este enlace con tu compañero de intercambio!</p>
+                <div class="share-link-container">
+                    <input type="text" value="${shareUrl}" class="share-link" readonly>
+                    <button class="copy-link"><i class="fas fa-copy"></i></button>
+                </div>
+                <small class="share-note">El enlace expirará en 24 horas</small>
+            </div>
+        `;
+
+        // Añadir al body
+        document.body.appendChild(shareSection);
+
+        // Evento para copiar
+        shareSection.querySelector('.copy-link').addEventListener('click', () => {
+            const linkInput = shareSection.querySelector('.share-link');
+            linkInput.select();
+            navigator.clipboard.writeText(linkInput.value);
+            document.body.removeChild(shareSection);
+        });
+
+        // Evento para cerrar
+        shareSection.querySelector('.close-share').addEventListener('click', () => {
+            document.body.removeChild(shareSection);
+        });
+
     }
 });
 // Agregar evento de clic a los botones de copiar
