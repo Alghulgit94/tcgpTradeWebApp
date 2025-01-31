@@ -402,24 +402,6 @@ button:hover {
     font-family: monospace;
 }
 
-.reset-filters {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    color: #2c3e50;
-    font-weight: 500;
-    padding: 8px 16px;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 20px;
-    transition: all 0.3s ease;
-}
-
-.reset-filters:hover {
-    background: linear-gradient(135deg, #a8e6cf 0%, #cbdbd9 100%);
-    transform: translateY(-2px);
-}
-
 .share-note {
     display: block;
     color: #666;

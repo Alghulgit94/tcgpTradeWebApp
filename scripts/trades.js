@@ -154,6 +154,7 @@ document.addEventListener('click', (event) => {
                     <button class="close-share">&times;</button>
                 </div>
                 <p>¡Comparte este enlace con tu compañero de intercambio!</p>
+                <a href="${shareUrl}">enlace</a>
                 <div class="share-link-container">
                     <input type="text" value="${shareUrl}" class="share-link" readonly>
                     <button class="copy-link"><i class="fas fa-copy"></i></button>
