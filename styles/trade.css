@@ -382,18 +382,16 @@ button:hover {
 }
 
 .share-link-container {
+    border: 2px solid red !important;
+        /* Para ver el contenedor */
     display: flex;
     gap: 0.5rem;
     margin: 1rem 0;
 }
 
-.share-link:focus {
-    outline: none;
-    border-color: #86d4c0;
-    box-shadow: 0 0 8px rgba(134, 212, 192, 0.3);
-}
-
 .share-link {
+    background: yellow !important; /*test lines*/
+        min-width: 200px !important; /*test lines*/
     flex: 1;
     padding: 0.5rem;
     border: 2px solid #a8e6cf;
@@ -401,6 +399,16 @@ button:hover {
     transition: all 0.3s ease;
     font-family: monospace;
 }
+
+.share-link:focus {
+    outline: none;
+    border-color: #86d4c0;
+    box-shadow: 0 0 8px rgba(134, 212, 192, 0.3); /*test lines*/
+}
+.fa-copy { /*test lines*/
+    font-size: 20px !important; /*test lines*/
+    color: blue !important; /*test lines*/
+} /*test lines*/
 
 .share-note {
     display: block;
