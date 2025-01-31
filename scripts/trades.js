@@ -154,10 +154,11 @@ document.addEventListener('click', (event) => {
                     <button class="close-share">&times;</button>
                 </div>
                 <p>¡Comparte este enlace con tu compañero de intercambio!</p>
-                <a href="${shareUrl}">enlace</a>
-                <div class="share-link-container">
-                    <input type="text" value="${shareUrl}" class="share-link" readonly>
-                    <button class="copy-link"><i class="fas fa-copy"></i></button>
+                <div class="trade-complete-button-container">
+                    <a class= "span-link" href="${shareUrl}">traderpocket.share.${tradeName}</a> 
+                    <button class="copy-share-button" data-id="${shareUrl}">
+                            <i class="fas fa-copy"></i>
+                        </button>
                 </div>
                 <small class="share-note">El enlace expirará en 24 horas</small>
             </div>
@@ -165,15 +166,6 @@ document.addEventListener('click', (event) => {
 
         // Añadir al body
         document.body.appendChild(shareSection);
-
-        // Evento para copiar
-        shareSection.querySelector('.copy-link').addEventListener('click', () => {
-            const linkInput = shareSection.querySelector('.share-link');
-            linkInput.select();
-            navigator.clipboard.writeText(linkInput.value);
-            document.body.removeChild(shareSection);
-        });
-
         // Evento para cerrar
         shareSection.querySelector('.close-share').addEventListener('click', () => {
             document.body.removeChild(shareSection);
@@ -186,13 +178,17 @@ document.addEventListener('click', (event) => {
     if (event.target.closest('.copy-id-button')) {
         const button = event.target.closest('.copy-id-button');
         const id = button.getAttribute('data-id');
-        copyToClipboard(id);
+        copyToClipboard(id, "ID copiado con exito");
+    } else if (event.target.closest('.copy-share-button')) {
+        const button = event.target.closest('.copy-share-button');
+        const id = button.getAttribute('data-id');
+        copyToClipboard(id, "Enlace copiado con exito");
     }
 });
-const copyToClipboard = (text) => {
+const copyToClipboard = (text, alertText) => {
     navigator.clipboard.writeText(text)
         .then(() => {
-            alert('ID copiado al portapapeles: ' + text);
+            alert(alertText);
         })
         .catch((error) => {
             console.error('Error al copiar el ID:', error);
