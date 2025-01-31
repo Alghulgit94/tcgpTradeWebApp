@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/trades", "destination": "/trades.html", "permanent": true },
+    { "source": "/id-trade", "destination": "/id-trade.html", "permanent": true }
+  ]
+}
