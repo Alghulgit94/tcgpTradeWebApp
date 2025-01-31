@@ -140,7 +140,9 @@ document.addEventListener('click', (event) => {
 
         // Crear o mostrar sección de compartir
         const encodedTradeName = encodeURIComponent(tradeName);
-        const shareUrl = `${window.location.origin}/id-trade.html?id=${tradeId}&name=${encodedTradeName}`;
+        const shareUrl = `https://tradepocket.vercel.app/id-trade.html?id=${tradeId}&name=${encodedTradeName}`;
+
+        console.log(shareUrl);
 
         // Crear elementos dinámicamente
         const shareSection = document.createElement('div');
