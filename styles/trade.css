@@ -1,0 +1,341 @@
+/* Base styles and reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #a8e6cf 0%, #8699d4 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header styles */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #2c3e50;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #1a4a5e;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: 500;
+    padding: 8px 16px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Trades list grid */
+.trades-list {
+    display: flex;
+    flex-direction: column;
+    /* Coloca los trades en una sola columna */
+    gap: 25px;
+    /* Espacio entre trades */
+    margin-top: 30px;
+}
+
+.trade-card {
+    width: 100%;
+    /* Ocupa el ancho completo */
+}
+
+/* Trade card styles */
+.trade-card {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.trade-card:hover {
+    transform: translateY(-5px);
+}
+
+.trade-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #eef7f6;
+}
+
+.trade-header span {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.trade-header small {
+    color: #7f8c8d;
+}
+
+/* Trade columns layout */
+.trade-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 500px) {
+    .trade-columns {
+        grid-template-columns: 1fr;
+    }
+}
+
+.trade-offer,
+.trade-want {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.trade-offer h3,
+.trade-want h3 {
+    color: #2c3e50;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Trade items styling */
+.trade-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: transform 0.2s ease;
+}
+
+.trade-item:hover {
+    transform: translateX(5px);
+}
+
+.trade-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    padding: 5px;
+}
+
+.trade-item span {
+    font-size: 0.9rem;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+/* Status indicators */
+.trade-status {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.trade-status.pendiente {
+    background: #ffeaa7;
+    color: #b7791f;
+}
+
+.trade-status.aceptado {
+    background: #c6f6d5;
+    color: #2f855a;
+}
+.trade-status.rechazado {
+    background: #f6d6c6;
+    color: #85432f;
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .trades-list {
+        grid-template-columns: 1fr;
+    }
+
+    .trade-card {
+        padding: 15px;
+    }
+}
+
+/* Loading and error states */
+.error-message {
+    text-align: center;
+    color: #e74c3c;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    margin-top: 20px;
+}
+.trade-user-info {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.trade-user-info span {
+    display: block;
+    margin-bottom: 5px;
+}
+.reset-filters {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: 500;
+    padding: 8px 16px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.reset-filters:hover {
+    background: linear-gradient(135deg, #a8e6cf 0%, #cbdbd9 100%);
+    transform: translateY(-2px);
+}
+.trade-complete-button-container {
+    text-align: center;
+    /* Centrar el botón */
+    margin-top: 20px;
+    /* Espacio superior */
+}
+
+.trade-complete-button, .trade-rejected-button, .open-app-button {
+    margin: 10px;
+    padding: 12px;
+    color: #2c3e50;
+    border: 2px solid #a8e6cf;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+}
+
+
+.trade-rejected-button:hover {
+    background: linear-gradient(135deg, #a8e6cf 0%, #cbdbd9 100%);
+    transform: translateY(-2px);
+}
+
+button{
+    background: none;
+    padding: 10px;
+    border-radius: 5px;
+    border:none;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #a8e6cf 0%, #cbdbd9 100%);
+    transform: translateY(-2px);
+}
+.user-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.user-input-group label {
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 0.9em;
+}
+.user-input {
+    padding: 12px;
+    border: 2px solid #a8e6cf;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+}
+
+.user-input:focus {
+    outline: none;
+    border-color: #86d4c0;
+    box-shadow: 0 0 8px rgba(134, 212, 192, 0.3);
+}
+.trade-instructions {
+    background: #f8f9fa;
+    border-left: 4px solid #07eeff;
+    padding: 0.8rem;
+    margin: 1rem 0;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.instruction-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.guide-steps h3 {
+    margin: 0 0 0.5rem 0;
+    color: #1a4a5e;
+    font-size: 1.1rem;
+}
+
+.guide-steps ol {
+    margin: 0;
+    padding-left: 1.2rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.guide-steps li {
+    margin-bottom: 0.3rem;
+}
+
+.app-note {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: #6c757d;
+    font-style: italic;
+}

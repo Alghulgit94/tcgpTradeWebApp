@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pocket Trade Connect</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./styles/offer.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Pocket Trade Connect</h1>
+        <p>¡Haz intercambios de TCGP fácilmente con otros players!</p>
+      </header>
+      <div class="quick-guide">
+        <div class="guide-steps">
+          <h3>¡Intercambia en 3 pasos! 💡</h3>
+          <ol>
+            <li class="app-note">
+              Ingresa tu <strong>nick del juego</strong> y tu
+              <strong>código de amigo</strong> para identificarte en el trade.
+            </li>
+            <li class="app-note">
+              Selecciona cartas que <strong>ofreces</strong> y
+              <strong>necesitas</strong> pero si lo deseas puedes solo
+              <strong>solicitar</strong> u <strong>ofrecer.</strong>
+            </li>
+            <li class="app-note">
+              <strong>Publica el Trade</strong> y visita la
+              <a href="trades.html">lista de trades realizados</a>.
+            </li>
+          </ol>
+          <div class="app-note">※ Necesitarás Pokémon TCGP instalado</div>
+        </div>
+      </div>
+      <div class="user-info-section">
+        <div class="user-input-group">
+          <label for="userNick">Tu Nickname</label>
+          <input
+            type="text"
+            id="userNick"
+            class="user-input"
+            placeholder="Ej: AshKetchum25"
+            maxlength="20"
+          />
+        </div>
+
+        <div class="user-input-group">
+          <label for="userId">ID (sin guiones)</label>
+          <input
+            type="text"
+            id="userId"
+            class="user-input"
+            placeholder="Ej: 1111222233334444"
+            maxlength="15"
+          />
+        </div>
+      </div>
+      <div class="trade-section">
+        <div class="trade-grid">
+          <div>
+            <h3 class="title-padding">Ofrezco</h3>
+            <div class="card-display" id="offering">
+              <div class="card" onclick="openModal('offering')">+</div>
+            </div>
+          </div>
+          <div class="exchange-icon">⇄</div>
+          <div>
+            <h3 class="title-padding">Busco</h3>
+            <div class="card-display" id="wanting">
+              <div class="card" onclick="openModal('wanting')">+</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button onclick="createTrade()">Publicar Trade</button>
+          <button onclick="clearTrade()">Resetear Trade</button>
+        </div>
+      </div>
+    </div>
+    <div id="cardModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header container">
+          <h2>Seleccionar Carta</h2>
+          <div class="modal-header-controls">
+            <!-- <button
+              class="reset-filters"
+              onclick="resetFilters()"
+              title="Resetear filtros"
+            >
+              <i class="fas fa-filter"></i>
+            </button> -->
+            <button class="reset-filters" onclick="closeModal()" title="Cerrar">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="filters">
+          <input
+            type="text"
+            class="filter-input"
+            placeholder="Buscar por nombre"
+            onkeyup="filterCards()"
+          />
+          <select
+            class="filter-input"
+            id="expansionFilter"
+            onchange="filterCards()"
+          >
+            <option value="">Todas las expansiones</option>
+          </select>
+          <select
+            class="filter-input"
+            id="paqueteFilter"
+            onchange="filterCards()"
+          >
+            <option value="">Seleccionar Pack</option>
+            <option value="Mewtwo Packs">Mewtwo Packs</option>
+            <option value="Pikachu Packs">Pikachu Packs</option>
+            <option value="Charizard Packs">Charizard Packs</option>
+            <option value="Dialga Packs">Dialga Packs</option>
+            <option value="Palkia Packs">Palkia Packs</option>
+            <option value="All Packs">All Packs</option>
+          </select>
+          <!-- Nuevo filtro de rareza -->
+          <select
+            class="filter-input"
+            id="rarezaFilter"
+            onchange="filterCards()"
+          >
+            <option value="">Todas las rarezas</option>
+          </select>
+        </div>
+
+        <div class="cards-grid" id="cardsGrid"></div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="./scripts/offer.js" defer></script>
+  </body>
+</html>
