@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <button class="trade-complete-button"
                         data-id="${trade.id}"
                         data-trade-name="${trade.trade_name}">
-                            Compartir
+                            Ver enlace de Trade
                         </button >
                 </div>`: ""
                     }
