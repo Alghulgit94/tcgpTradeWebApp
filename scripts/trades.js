@@ -150,17 +150,17 @@ document.addEventListener('click', (event) => {
         shareSection.innerHTML = `
             <div class="share-container">
                 <div class="share-header">
-                    <h3>📤 Compartir Trade</h3>
+                    <h3>¡Compartir Trade!</h3>
                     <button class="close-share">&times;</button>
                 </div>
-                <p>¡Comparte este enlace con tu compañero de intercambio!</p>
+                <p>Comparte este enlace con tu compañero de intercambio</p>
                 <div class="trade-complete-button-container">
                     <a class= "span-link" href="${shareUrl}">traderpocket.share.${tradeName}</a> 
                     <button class="copy-share-button" data-id="${shareUrl}">
                             <i class="fas fa-copy"></i>
                         </button>
                 </div>
-                <small class="share-note">El enlace expirará en 24 horas</small>
+                <small class="share-note">※ El trade finaliza cuando se <strong>aprueba</strong> o <strong>rechaza</strong> el intercambio.</small>
             </div>
         `;
 
